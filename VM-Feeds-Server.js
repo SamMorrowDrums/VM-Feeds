@@ -60,7 +60,7 @@ exports.fetch = function (name, num){
       if (num) {
         start = len - num > 0? len - num : 0;
       }
-      for (var i = start; i < len; i++) {
+      for (var i = len - 1; i >= start; i--) {
         if (feeds[name].info.maxAge && feeds[name].info.maxAge > output.date - feeds[name].data[i].date) {
           output.content.push(feeds[name].data[i]);
         } else if (feeds[name].info.maxAge) {
