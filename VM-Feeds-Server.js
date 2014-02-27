@@ -49,7 +49,12 @@ exports.fetch = function (name){
         date: new Date().getTime(),
         content: []
       };
-      for (var i = 0; i < feeds[name].data.length; i++) {
+      var len = feeds[name].data.length;
+      var start = 0;
+      if (num) {
+        start = len - num > 0? len - num : 0;
+      }
+      for (var i = start; i < len; i++) {
         if (feeds[name].info.maxAge && feeds[name].info.maxAge > output.date - feeds[name].data[i].date) {
           output.content.push(feeds[name].data[i]);
         } else if (feeds[name].info.maxAge) {
