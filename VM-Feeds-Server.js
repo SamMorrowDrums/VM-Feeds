@@ -6,8 +6,7 @@ This also drives the content feeds for ViewMachine CMS
 
 var feeds = {};
 
-Exports = {
-  createFeed: function (name, info) {
+exports.createFeed = function (name, info) {
     if (feeds[name] !== undefined) {
       console.log('Feed ' + name + ' already exists.');
       return false;
@@ -18,30 +17,31 @@ Exports = {
       };
       return true;
     }
-  },
-  deleteFeed: function (name) {
+};
+exports.deleteFeed = function (name) {
     if (feeds[name] !== undefined) {
       delete feeds[name];
       return true;
     } else {
       return false;
     }
-  },
-  addItem: function (name, item) {
+};
+exports.addItem = function (name, item) {
     if (feeds[name] !== undefined) {
-      var newItem = {date: new Date().getTime(), content: view};
-      if (feeds[name].data.length >= feeds.info.maxLength) {
-        var i = feeds[name].data.length - feeds.info.maxLength;
-        feeds[name].data.splice(i, feeds[name].data.length, newItem);
+      var newItem = {date: new Date().getTime(), content: item};
+      if (feeds[name].data.length >= feeds[name].info.maxLength) {
+        var i = feeds[name].data.length - feeds[name].info.maxLength;
+        i -= 1;
+        feeds[name].data.splice(i, feeds[name].data.length, JSON.parse(newItem));
       } else {
-        feeds[name].data.push(newItem);
+        feeds[name].data.push(JSON.parse(newItem));
       }
       return true;
     } else {
       return false;
     }
-  },
-  fetch: function (name){
+};
+exports.fetch = function (name){
     if (feeds[name] !== undefined) {
       var output = {
         js: feeds[name].info.js,
@@ -62,5 +62,4 @@ Exports = {
     } else {
       return false;
     }
-  }
 };
