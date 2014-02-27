@@ -49,7 +49,7 @@ This also drives the content feeds for ViewMachine CMS
   var total;
   var settings =
   {
-    feeds: ['http://localhost:3000/feeds/customFeed'],                                                                // URLs of ViewMachine feeds to aggregate content from
+    feeds: ['http://viewMachine.io/feeds/customFeed'],                                                                // URLs of ViewMachine feeds to aggregate content from
     interval: 30000,                                                                                     // Interval to refresh the feeds at
     parent: new VM.El('div').css({'width': '80%', 'padding': '20px', 'margin': 'auto', 'background-color': '#ccc'}),       // VM parent, to put in the content
     constructor: block                                                                                   // VM Wrapper for each piece of content
