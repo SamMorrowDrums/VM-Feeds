@@ -29,11 +29,11 @@ var app = express();
 feeds.createFeed('customFeed', {maxAge: 6000000, maxLength: 10});
 
 //Next add in template items, as they are created, using ViewMachine Server (yet to be released)
-feeds.addItem('test', VMjsonTemplate);
+feeds.addItem('customFeed', 'Some ViewMachine JSON');
 
 //Finally, serve your feed
 app.get('/feeds/:feed', function (req, res) {
-	res.JSON(feeds.fetch(req.params.feed));
+	res.json(feeds.fetch(req.params.feed));
 });
 
 
