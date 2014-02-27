@@ -5,6 +5,11 @@ This also drives the content feeds for ViewMachine CMS
 */
 
 var feeds = {};
+var date;
+
+exports.lastUpdated = function () {
+  return date;
+};
 
 exports.createFeed = function (name, info) {
     if (feeds[name] !== undefined) {
@@ -27,8 +32,9 @@ exports.deleteFeed = function (name) {
     }
 };
 exports.addItem = function (name, item) {
+  date = new Date().getTime();
     if (feeds[name] !== undefined) {
-      var newItem = {date: new Date().getTime(), content: item};
+      var newItem = {date: date, content: item};
       if (feeds[name].data.length >= feeds[name].info.maxLength) {
         var i = feeds[name].data.length - feeds[name].info.maxLength;
         i -= 1;
@@ -46,7 +52,7 @@ exports.fetch = function (name){
       var output = {
         js: feeds[name].info.js,
         meta: feeds[name].info.meta,
-        date: new Date().getTime(),
+        date: date,
         content: []
       };
       var len = feeds[name].data.length;
