@@ -47,7 +47,7 @@ exports.addItem = function (name, item) {
       return false;
     }
 };
-exports.fetch = function (name){
+exports.fetch = function (name, num){
     if (feeds[name] !== undefined) {
       var output = {
         js: feeds[name].info.js,
