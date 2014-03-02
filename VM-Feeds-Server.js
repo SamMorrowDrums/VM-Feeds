@@ -38,7 +38,7 @@ exports.addItem = function (name, item) {
       if (feeds[name].data.length >= feeds[name].info.maxLength) {
         var i = feeds[name].data.length - feeds[name].info.maxLength;
         i -= 1;
-        feeds[name].data.splice(i, feeds[name].data.length);
+        feeds[name].data.splice(0, i);
       }
       feeds[name].data.push(newItem);
       return true;
