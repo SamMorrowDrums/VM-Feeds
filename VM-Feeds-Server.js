@@ -38,10 +38,9 @@ exports.addItem = function (name, item) {
       if (feeds[name].data.length >= feeds[name].info.maxLength) {
         var i = feeds[name].data.length - feeds[name].info.maxLength;
         i -= 1;
-        feeds[name].data.splice(i, feeds[name].data.length, newItem);
-      } else {
-        feeds[name].data.push(newItem);
+        feeds[name].data.splice(i, feeds[name].data.length);
       }
+      feeds[name].data.push(newItem);
       return true;
     } else {
       return false;
